@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple App</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="main.js" type="module"></script>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    #carouselExampleIndicators {
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: 2px solid #fcfdfc;
+        overflow: hidden;
+        margin-bottom: 40px;
+        font-family: 'Didot, serif';
+    }
+    .carousel-caption{
+        color: rgb(255, 252, 252);
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(1, 36, 5, 0.7);
+        border-radius: 50%;
+        top: 50%;
+        /*transform: translateY(-50%);*/
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    body{
+        background-color: rgb(0, 18, 0);
+    }
+    .card{
+        justify-content: center; /* Центрирование карточек по горизонтали */
+        gap: 20px; /* Равные отступы между карточками */
+        margin: 10px;
+        margin-left: 12px;
+        cursor: pointer;
+        font-family: 'Didot, serif';
+    
+        
+    }
+    .card-text{
+        color: #023f09;
+        font-size: 0.7em;
+    }
+    .btn{
+        background-color: rgb(248, 251, 248);
+        border-radius: 10px;
+        border: 2px solid #012405;
+        color: #012405;
+        font-family: 'Didot, serif';
+    }
+    .btn:active {
+        background-color: rgb(1, 41, 1); 
+        border: 2px solid rgb(1, 39, 1);
+        
+    }
+    .btn:hover {
+        background-color: rgb(1, 39, 1); 
+        border: 2px solid rgb(1, 39, 1);
+        color:#fcfdfc;
+    }
+    .like-btn, 
+    .site-link {
+        width: 32px; 
+        height: 32px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        cursor: pointer; 
+        border-radius: 50%;
+        padding: 0; /* Убираем внутренние отступы */
+        margin: 0; /* Убираем внешние отступы */
+        border: none; /* Убираем границу у кнопки */
+        background: transparent; /* Прозрачный фон */
+        line-height: 1; /* Единая высота строки */
+    }
+
+    /* Дополнительно для SVG иконок */
+    .like-btn svg, 
+    .site-link svg {
+        width: 18px; 
+        height: 18px;
+        display: block; /* Убираем лишнее пространство вокруг */
+        margin: auto; /* Центрирование */
+    }
+    
+</style>
+</body>
+</html>
+
