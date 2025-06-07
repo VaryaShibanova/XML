@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    
+<head> 
+    <title>ИНФОРМАЦИЯ ОБ ИСПОЛНИТЕЛЕ</title>
+    <!-- указываем, что файл style.css содержит таблицу стилей (stylesheet) -->
+    <link rel="stylesheet" href="lab1calculatorstyle.css"> 
+    
+</head>
+
+
+<head>
+  <title>Калькулятор</title>
+</head>
+
+
+<body> 
+  <footerup>
+    <a  href = "lab1calculator.html" class = "logotip" alt="ЦУМ - Главная страница"></a> 
+   
+  </footerup>  
+  <div class = "container"> <!-- div - это базовый html-контейнер, который может содержать в себе другие html-элементы. -->
+    <!-- блок с экраном калькулятора, где будет выводиться результат вычислений. -->
+    
+     <div class = "infotext">
+        <h2>ИНФОРМАЦИЯ ОБ ИСПОЛНИТЕЛЕ</h2>
+                <h4>Шибанова Варвара</h4>
+                <p><strong>Учебное заведение:</strong> МГТУ им. Н.Э.Баумана</p>
+                <p><strong>Курс:</strong> 2</p>
+                <p><strong>Группа:</strong> ИУ5-41Б</p>
+                <p><strong>тел.:</strong> 8 (910) 401-33-45</p>
+                <p><strong>Email:</strong> v4013345@gmail.com</p>
+     </div>
+  </div>
+    <footerdown>
+        <button id = "btn_change_theme_all" class = "theme-toggle"></button>
+        <div class = "letter">
+          <span>Moscow, 2025</span>
+          <span>Авторские права © 2025</span>
+        </div>
+        <div class = "github">
+          <a href = "https://github.com/VaryaShibanova">Github</a>
+        </div>
+    </footerdown>
+    <script>
+    const container = document.querySelector('body');
+      const themeToggleALL = document.getElementById('btn_change_theme_all');
+  
+      themeToggleALL.addEventListener('click', () => {
+          container.classList.toggle('dark-theme'); // Переключает класс 'dark-theme' 
+      });
+      </script>
+</body>
+</html>    

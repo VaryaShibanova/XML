@@ -1,0 +1,460 @@
+lab1calculator.html
+<!DOCTYPE html>
+<html>
+    
+<head> 
+    <title>калькулятор</title>
+    <!-- указываем, что файл style.css содержит таблицу стилей (stylesheet) -->
+    <link rel="stylesheet" href="lab1calculatorstyle.css"> 
+    <script type="text/javascript" src="scripcalculator.js"></script> 
+</head>
+
+
+
+<head>
+  <title>Калькулятор</title>
+</head>
+
+
+<body> 
+  <footerup>
+    <a  href = "https://www.tsum.ru/?utm_source=yandex&utm_medium=cpc&utm_campaign=cid:112029321|cn:tsum-performance-campaign-all-cat-web&utm_term=ph:52196672411|kw:---autotargeting&utm_content=dev:desktop|rid:213|gid:5459312862|aid:16241589013|re:52196672411|drf:no|pos:1|postype:premium&yclid=4603107953069260799" class = "logotip" alt="ЦУМ - Главная страница"></a> 
+    
+    
+  </footerup>  
+     <div class = "container"> <!-- div - это базовый html-контейнер, который может содержать в себе другие html-элементы. -->
+      <!-- блок с экраном калькулятора, где будет выводиться результат вычислений. -->
+      
+       <div class = "calculator">
+        <div id="result" class = "result"></div>
+        
+          
+
+          <!-- блок с кнопками калькулятора. -->
+          
+            <!--горизонтальный ряд из четырех кнопок-->
+            <div>  
+              <button id="btn_op_clear" class = "my-btn primary"><b>C</b></button>    <!-- про тэг кнопки: https://www.w3schools.com/tags/tag_button.asp -->
+              <button id="btn_op_sign" class = "my-btn secondary">+/-</button>
+              <button id="btn_op_percent" class = "my-btn secondary" >%</button>
+              <button id="btn_op_div" class = "my-btn secondary">/</button>
+              <button id="btn_op_mult" class = "my-btn secondary">x</button>
+            </div>
+
+            <div>
+              <button id="btn_digit_7" class="my-btn">7</button>
+              <button id="btn_digit_8"class="my-btn" >8</button>
+              <button id="btn_digit_9"class="my-btn" >9</button>
+              <button id="btn_op_sqrt" class = "my-btn secondary">√</button>
+              <button id="btn_op_degree" class = "my-btn secondary">x²</button>
+            </div>
+
+            <div>
+              <button id="btn_digit_4"class="my-btn">4</button>
+              <button id="btn_digit_5"class="my-btn">5</button>
+              <button id="btn_digit_6"class="my-btn">6</button>
+              <button id="btn_op_minus" class = "my-btn secondary" >-</button>
+              <button id="btn_op_fact" class = "my-btn secondary" >x!</button>
+            </div>
+
+            <div>
+              <button id="btn_digit_1"class="my-btn">1</button>
+              <button id="btn_digit_2"class="my-btn">2</button>
+              <button id="btn_digit_3"class="my-btn">3</button>
+              <button id="btn_op_plus" class = "my-btn secondary">+</button>
+              <button id="btn_op_000" class = "my-btn secondary">000</button>
+            </div>
+
+            <div>
+              <button id="btn_digit_0"class="my-btn">0</button>
+              <button id="btn_digit_dot" class = "my-btn secondary">.</button>
+              <button id="btn_op_equal" class ="my-btn execute"><b>=</b></button>
+              <button id="btn_op_back" class ="my-btn secondary">back</button>
+            </div>
+
+            <div>
+              <button id="btn_change_theme_result"class="my-btn change">change theme</button>
+            </div> 
+        </div>
+      </div>    
+    </div>
+  </div>
+  <footerdown> 
+    <button id = "btn_change_theme_all" class = "theme-toggle"></button>
+    <div class = "letter">
+      <a href="lab1infotab.html">Информация об исполнителе</a> <!-- ПОДУМАТЬ над оформлением нижнего футера -->
+      <span>Moscow, 2025</span>
+      <span>Авторские права © 2025</span>
+    <div class = "github">
+        <a href = "https://github.com/VaryaShibanova">Github</a>
+    </div>
+    </div>
+  </footerdown>
+</body>
+</html>
+
+/* опишем базовый стиль кнопки калькулятора */
+
+body {
+  font-family: Palatino, URW Palladio L, serif;
+  background-color: rgb(245, 243, 241); 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container{
+  background-color: rgb(245, 243, 241);
+  top: 20%;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  min-height: 130vh;
+}
+
+body.dark-theme .container{
+  background-color: #241200;
+}
+
+body.dark-theme {
+  background-color: #241200; /* Темная тема */
+}
+
+.calculator{
+  background:#ed5711;
+  padding: 20px;
+  border-radius: 10px;    
+  outline: 5px solid #0a0a0a;  /* 1px, сплошная, цвет */
+  outline-offset: 2px;            
+}
+
+body.dark-theme .calculator { /* Изменяем цвет рамки, когда контейнер в темной теме */
+  outline-color: #fff; /* Белый цвет рамки */
+}
+
+.my-btn { 
+  margin-right: 4px;           /* задаем отступ от кнопки справа */
+  margin-top: 6px;             /* задаем отступ от кнопки сверху*/
+  width: 50px;                 /* задаем ширину кнопки */
+  height: 50px;                /* задаем высоту кнопки */
+  border-radius: 30%;          /* округляем кнопку */
+  border: none;                /* отключаем обводку */
+  background: #eae9e7;         /* задаем серый цвет кнопки */
+  color: rgb(6, 6, 6);                /* задаем белый цвет текста внутри кнопки */
+  font-size: 1.5rem;           /* увеличим размер шрифта */
+  font-family: Palatino, URW Palladio L, serif; /* сменим шрифт */
+  cursor: pointer;             /* при наведении на кнопку курсор будет изменен
+                                  со стрелки на 'указательный палец' */
+  user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
+  outline: 1.5px solid #0a0a0a;  /* 1px, сплошная, цвет */
+  outline-offset: 1px;
+} 
+
+body.dark-theme .my-btn { /* Изменяем цвет рамки, когда контейнер в темной теме */
+  outline-color: #fff; /* Белый цвет рамки */
+}
+  
+  /* hover - это состояние элемента, когда на него наведен курсор */
+  .my-btn:hover {
+    background: #ed5711; /* при наведение курсора на кнопку, она будет окрашена в серый */
+  }
+  
+  /* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+  .my-btn:active {
+    filter: brightness(150%); /* увеличим интенсивность цвета для эффекта вспышки */
+  }
+  
+  /* селектор для кнопок первостепенных операций */
+  .my-btn.primary { 
+    background: #754703; /* цвет кнопки оранжевый */
+  }
+  
+  /* селектор для кнопок второстепенных операций */
+  .my-btn.secondary { 
+    background: #946c47; /* цвет кнопки сервый */
+  }
+  
+  /* селектор для кнопки расчета выражения (=) */
+  .my-btn.execute {
+    width: 110px;          /* сделаем кнопку шире других */
+    border-radius: 15px; 
+    background-color:#754703;  /* подкорректируем округлость */
+  }
+  
+  /* селектор для поля вывода результата */
+  .result { 
+    width: 275px;
+    height: 70px;
+    margin-bottom: 15px;         /* отступ снизу */
+    padding-right: 5px;         /* выступ справа */
+    background: rgb(246, 245, 244); /* цвет можно задавать и таким образом */
+    text-align: center;           /* примагнитим текст к правой стороне */
+    color: #030000;              /* цвет текста белый */
+    font-size: 3rem;
+    font-family: Palatino, URW Palladio L, serif;
+    outline: 2px solid #0a0a0a;  /* 1px, сплошная, цвет */
+    outline-offset: 1.5px;
+    white-space: nowrap;
+    overflow: hidden; 
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;   /* Центрирование по горизонтали */
+    align-items: center;       /* Центрирование по вертикали */
+    text-align: center;  
+  }
+
+  .result.dark-theme { /* только для окна result*/
+    background: #0c0c0c;       /* Темно-серый фон */
+    color: #f0f0f0;        /* Светло-серый текст */
+    outline: 2px solid #f9f6f6;  /* Светло-серый контур */
+    outline-offset: 1.5px;
+  }
+
+  /*для всего бодика*/
+  .dark-theme .result { /* Изменяем цвет рамки, когда контейнер в темной теме */
+    outline-color: #fff; /* Белый цвет рамки */
+  }
+
+scriptcalculator.js
+
+// файл script.js
+window.onload = function() {
+
+    let a = '';
+    let b = '';
+    let expressionResult = '';
+    let selectedOperation = null;
+    let accumulatedValue = 0; // Для накапливаемых операций
+
+    // окно вывода результата
+    outputElement = document.getElementById("result");
+
+    // список объектов кнопок циферблата (id которых начинается с btn_digit_)
+    digitButtons = document.querySelectorAll('[id ^= "btn_digit_"]');
+
+    function onDigitButtonClicked(digit) {
+        if (!selectedOperation) {
+            if ((digit != '.') || (digit == '.' && !a.includes(digit))) {
+                a += digit;
+            }
+            outputElement.innerHTML = a;
+        } else {
+            if ((digit != '.') || (digit == '.' && !b.includes(digit))) {
+                b += digit;
+                outputElement.innerHTML = b;
+            }
+        }
+    }
+
+    // устанавка колбек-функций на кнопки циферблата по событию нажатия
+    digitButtons.forEach(button => {
+        button.onclick = function() {
+            const digitValue = button.innerHTML;
+            onDigitButtonClicked(digitValue);
+        }
+    });
+
+    // установка колбек-функций для кнопок операций
+    document.getElementById("btn_op_mult").onclick = function() {
+        if (a === '') return;
+        selectedOperation = 'x';
+        accumulatedValue = parseFloat(a);
+    }
+    document.getElementById("btn_op_plus").onclick = function() {
+        if (a === '') return;
+        selectedOperation = '+';
+         accumulatedValue = parseFloat(a);
+    }
+    document.getElementById("btn_op_minus").onclick = function() {
+        if (a === '') return;
+        selectedOperation = '-';
+         accumulatedValue = parseFloat(a);
+    }
+    document.getElementById("btn_op_div").onclick = function() {
+        if (a === '') return;
+        selectedOperation = '/';
+         accumulatedValue = parseFloat(a);
+    }
+
+    // кнопка очищения
+    document.getElementById("btn_op_clear").onclick = function() {
+        a = '';
+        b = '';
+        selectedOperation = null;
+        expressionResult = '';
+        accumulatedValue = 0;
+        outputElement.innerHTML = 0;
+    }
+
+    // кнопка расчёта результата 
+    document.getElementById("btn_op_equal").onclick = function() {
+        if (a === '' || b === '' || !selectedOperation)
+            return;
+
+        switch (selectedOperation) {
+            case 'x':
+                expressionResult = (+a) * (+b);
+                break;
+            case '+':
+                expressionResult = (+a) + (+b);
+                break;
+            case '-':
+                expressionResult = (+a) - (+b);
+                break;
+            case '/':
+                expressionResult = (+a) / (+b);
+                break;
+            case '+=':
+                 accumulatedValue += parseFloat(a);
+                expressionResult = accumulatedValue;
+                break;
+            case '-=':
+                accumulatedValue -= parseFloat(a);
+                expressionResult = accumulatedValue;
+                break;
+        }
+
+        a = expressionResult.toString();
+        b = '';
+        selectedOperation = null;
+
+        outputElement.innerHTML = a;
+    }
+
+    // Смена знака +/-
+    document.getElementById("btn_op_sign").onclick = function() {
+        if (a !== '') {
+            a = (parseFloat(a) * -1).toString();
+            outputElement.innerHTML = a;
+        }
+    };
+
+    // Вычисление процента %
+    document.getElementById("btn_op_percent").onclick = function() {
+        if (a !== '') {
+            a = (parseFloat(a) / 100).toString();
+            outputElement.innerHTML = a;
+        }
+    };
+
+    // Кнопка стирания введенной цифры назад (backspace)
+    document.getElementById("btn_op_back").onclick = function() {
+        if (!selectedOperation) {
+            a = a.slice(0, -1);
+            outputElement.innerHTML = a || 0; // Show 0 if empty
+        } else {
+            b = b.slice(0, -1);
+            outputElement.innerHTML = b || 0; // Show 0 if empty
+        }
+    };
+
+    // Вычисление квадратного корня √
+    document.getElementById("btn_op_sqrt").onclick = function() {
+        if (a !== '') {
+            a = Math.sqrt(parseFloat(a)).toString();
+            outputElement.innerHTML = a;
+        }
+    };
+
+    // Возведение в квадрат x²
+    document.getElementById("btn_op_degree").onclick = function() {
+        if (a !== '') {
+            a = Math.pow(parseFloat(a), 2).toString();
+            outputElement.innerHTML = a;
+        }
+    };
+
+    // Вычисление факториала x!
+    document.getElementById("btn_op_fact").onclick = function() {
+        if (a !== '') {
+            let num = parseInt(a);
+            if (num === 0) {
+                a = '1';
+            } else if (num > 0) {
+                let result = 1;
+                for (let i = 1; i <= num; i++) {
+                    result *= i;
+                }
+                a = result.toString();
+            } else {
+                a = 'Error';
+            }
+            outputElement.innerHTML = a;
+        }
+    };
+
+    // Кнопка, которая за раз добавляет сразу три нуля (000)
+    document.getElementById("btn_op_000").onclick = function() {
+        if (!selectedOperation) {
+            a += '000';
+            outputElement.innerHTML = a;
+        } else {
+            b += '000';
+            outputElement.innerHTML = b;
+        }
+    };
+    /*/ Накапливаемое сложение
+    document.getElementById("btn_op_accumulate_plus").onclick = function() {
+    if (a === '') return;
+        selectedOperation = '+=';
+
+    };
+
+    // Накапливаемое вычитание
+    document.getElementById("btn_op_accumulate_minus").onclick = function() {
+        if (a === '') return;
+            selectedOperation = '-=';
+
+    };*/
+    /*СМЕНА ТЕМЫ ТОЛЬКО ДЛЯ ПОЛЯ RESULT*/ 
+    const container1 = document.querySelector('.result');
+    const themeresult = document.getElementById('btn_change_theme_result');
+
+    themeresult.addEventListener('click', () => {
+        container1.classList.toggle('dark-theme'); // Переключает класс 'dark-theme' только для result
+    });
+/*СМЕНА ВСЕЙ ТЕМЫ(ТЕМЫ ВСЕГО САЙТА)*/
+    const container = document.querySelector('body');
+    const themeToggleALL = document.getElementById('btn_change_theme_all');
+
+    themeToggleALL.addEventListener('click', () => {
+        container.classList.toggle('dark-theme'); 
+    });
+
+/*АВТОМАТИЧЕСКОЕ УМЕНЬШЕНИЕ ТЕКСТА*/
+    /*АВТОМАТИЧЕСКОЕ УМЕНЬШЕНИЕ ТЕКСТА*/
+    const INITIAL_FONT_SIZE = 3; // rem (начальный размер)
+    const MIN_FONT_SIZE = 1.5;  // rem (минимальный размер)
+
+    function updateResult() {
+        if (!selectedOperation) {
+            resultOutput.innerHTML = a || 0; // Show 0 if empty
+        } else {
+            resultOutput.innerHTML = b || 0; // Show 0 if empty
+    }
+
+    adjustFontSize();
+    }
+
+    function adjustFontSize() {
+        let fontSize = INITIAL_FONT_SIZE;
+        resultOutput.style.fontSize = fontSize + "rem";
+
+        while (
+            resultOutput.scrollWidth > resultOutput.offsetWidth &&
+            fontSize > MIN_FONT_SIZE
+        ) {
+        fontSize -= 0.1;
+        resultOutput.style.fontSize = fontSize + "rem";
+        }
+        if(fontSize <= MIN_FONT_SIZE && resultOutput.scrollWidth > resultOutput.offsetWidth){
+            resultOutput.style.fontSize = MIN_FONT_SIZE + 'rem';
+        }
+    }
+
+};

@@ -1,0 +1,312 @@
+/* опишем базовый стиль кнопки калькулятора */
+
+body {
+  font-family: Palatino, URW Palladio L, serif;
+  background-color: rgb(245, 243, 241); 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container{
+  background-color: rgb(245, 243, 241);
+  top: 20%;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  min-height: 130vh;
+}
+
+body.dark-theme .container{
+  background-color: #241200;
+}
+
+body.dark-theme {
+  background-color: #241200; /* Темная тема */
+}
+
+.calculator{
+  background:#ed5711;
+  padding: 20px;
+  border-radius: 10px;    
+  outline: 5px solid #0a0a0a;  /* 1px, сплошная, цвет */
+  outline-offset: 2px;            
+}
+
+body.dark-theme .calculator { /* Изменяем цвет рамки, когда контейнер в темной теме */
+  outline-color: #fff; /* Белый цвет рамки */
+}
+
+.my-btn { 
+  margin-right: 4px;           /* задаем отступ от кнопки справа */
+  margin-top: 6px;             /* задаем отступ от кнопки сверху*/
+  width: 50px;                 /* задаем ширину кнопки */
+  height: 50px;                /* задаем высоту кнопки */
+  border-radius: 30%;          /* округляем кнопку */
+  border: none;                /* отключаем обводку */
+  background: #eae9e7;         /* задаем серый цвет кнопки */
+  color: rgb(6, 6, 6);                /* задаем белый цвет текста внутри кнопки */
+  font-size: 1.5rem;           /* увеличим размер шрифта */
+  font-family: Palatino, URW Palladio L, serif; /* сменим шрифт */
+  cursor: pointer;             /* при наведении на кнопку курсор будет изменен
+                                  со стрелки на 'указательный палец' */
+  user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
+  outline: 1.5px solid #0a0a0a;  /* 1px, сплошная, цвет */
+  outline-offset: 1px;
+} 
+
+body.dark-theme .my-btn { /* Изменяем цвет рамки, когда контейнер в темной теме */
+  outline-color: #fff; /* Белый цвет рамки */
+}
+  
+  /* hover - это состояние элемента, когда на него наведен курсор */
+  .my-btn:hover {
+    background: #ed5711; /* при наведение курсора на кнопку, она будет окрашена в серый */
+  }
+  
+  /* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+  .my-btn:active {
+    filter: brightness(150%); /* увеличим интенсивность цвета для эффекта вспышки */
+  }
+  
+  /* селектор для кнопок первостепенных операций */
+  .my-btn.primary { 
+    background: #754703; /* цвет кнопки оранжевый */
+  }
+  
+  /* селектор для кнопок второстепенных операций */
+  .my-btn.secondary { 
+    background: #946c47; /* цвет кнопки сервый */
+  }
+  
+  /* селектор для кнопки расчета выражения (=) */
+  .my-btn.execute {
+    width: 110px;          /* сделаем кнопку шире других */
+    border-radius: 15px; 
+    background-color:#754703;  /* подкорректируем округлость */
+  }
+  
+  /* селектор для поля вывода результата */
+  .result { 
+    width: 275px;
+    height: 70px;
+    margin-bottom: 15px;         /* отступ снизу */
+    padding-right: 5px;         /* выступ справа */
+    background: rgb(246, 245, 244); /* цвет можно задавать и таким образом */
+    text-align: center;           /* примагнитим текст к правой стороне */
+    color: #030000;              /* цвет текста белый */
+    font-size: 3rem;
+    font-family: Palatino, URW Palladio L, serif;
+    outline: 2px solid #0a0a0a;  /* 1px, сплошная, цвет */
+    outline-offset: 1.5px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;   /* Центрирование по горизонтали */
+    align-items: center;       /* Центрирование по вертикали */
+    text-align: center; 
+    white-space: nowrap;
+    overflow: hidden;  
+  }
+
+  .result.dark-theme { /* только для окна result*/
+    background: #241200;       /* Темно-серый фон */
+    color: #f0f0f0;        /* Светло-серый текст */
+    outline: 2px solid #f9f6f6;  /* Светло-серый контур */
+    outline-offset: 1.5px;
+  }
+
+  /*для всего бодика*/
+  .dark-theme .result { /* Изменяем цвет рамки, когда контейнер в темной теме */
+    outline-color: #fff; /* Белый цвет рамки */
+  }
+
+  footerup {
+    box-sizing: border-box;
+    position: fixed; /* Делаем элемент фиксированным */
+    top: 0;       /* Прижимаем к нижней части экрана */
+    left: 0;         /* Прижимаем к левой части экрана */
+    width: 100%;     /* Занимает всю ширину экрана */
+    background-color: #ed5711;
+    padding: 10px; /* отступы, чтобы логотип занимал все пространство */
+    display: flex;
+    justify-content: center; /* Выравниваем по горизонтали */
+    align-items: center; /* Выравниваем по вертикали */
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid #0f0f0f;
+    height: 100px; /* Задаем высоту футера */
+    z-index: 1000;    /* Устанавливаем высокий z-index, чтобы футер был поверх всего контента */
+  }
+
+ /*???????????????? - оформить цвета, подумать над этим!!!!
+   /*body.dark-theme footerup {
+    background-color: #855339; /* Темная тема - темно-серый */
+  /*border-bottom: 1px solid #ccc; /* Светлый разделитель для темной темы */
+  
+  
+
+  footerdown {                    
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    background-color: #313130;
+    padding: 40px 5%;
+    padding-left: 45%;
+    padding-right: 30%;
+    margin-top: auto; /* Для прижатия к низу */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    font-family: Arial, sans-serif;
+    border-top: 1px solid #0e0e0e;
+  }
+
+.logotip { /*МОЖЕТ ТОЖЕ ОКРУГЛИТЬ?*/
+  text-decoration: none;
+  color: #f2f0f0;
+  cursor: auto;
+  display: block; /* Делаем блочным, чтобы занимал всю ширину футера*/
+  width: 200px; /* Занимает всю доступную ширину */
+  height: 90px; /* Занимает всю доступную высоту*/
+
+  background-image: url('https://www.tsum.ru/static/media/logo.5e134.svg');
+  background-size: contain; /* Масштабируем, чтобы поместился внутри */
+  background-position: center; /* Выравниваем по центру */
+  background-repeat: no-repeat;
+  text-indent: 100%; /*Скрываем текст*/
+  overflow: hidden; /*Скрываем текст*/
+}
+
+
+.github { 
+  position: absolute;    /* Абсолютное позиционирование внутри footerup */
+  top: center;            /* Отступ от верхнего края */
+  display: flex;
+  align-items: center;
+  background-color: #444343;
+  border-radius: 4px;
+  outline: 1.5px solid #313130;  /* 1px, сплошная, цвет */
+  outline-offset: 2px; 
+  left: 800px;   
+}
+
+.github a {
+  color: #0e0e0e;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github:hover a {
+  color: #6b6868;
+  cursor: pointer;
+}
+
+/* Добавляем иконку GitHub */
+.github a::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2366727f"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>');
+  transition: filter 0.3s ease;
+}
+
+.github:hover a::before {
+  filter: brightness(0.3);
+}
+
+.letter{
+  display: flex; /* Включаем Flexbox */
+  flex-direction:column;
+  gap: 10px; /*отступ */
+  text-align: center;
+  color: #eae9e7;
+  font-size: 0.8rem;
+  font-family: Palatino, URW Palladio L, serif;
+}
+
+.letter a {
+  color: #f9f5f5;          /* Желаемый цвет текста */
+  text-decoration: none;
+  border-radius: 4px; 
+}
+
+.infotext{
+  background: #ed5711;
+  padding: 20px;
+  border-radius: 10px;
+  outline: 5px solid #0a0a0a;
+  outline-offset: 2px;
+  margin-top: 150px;    /* Отступ от footerup */
+  margin-bottom: 0px; /* Отступ от footerdown */     
+  color:#070707;        
+}
+
+.dark-theme .infotext { /* Изменяем цвет рамки, когда контейнер в темной теме */
+  outline-color: #fff; /* Белый цвет рамки */
+  color:#fcfbfb;
+}
+
+.my-btn.change { 
+  width: 285px;
+  height: 40px;        /* сделаем кнопку шире других */
+  border-radius: 15px; 
+  background-color:#fcfbfa;  /* подкорректируем округлость */
+}
+
+.container.laight-theme {
+  background-color: rgb(245, 243, 241);
+  transition: background-color 0.3s, color 0.3s; /* Плавный переход */
+}
+
+/* Тёмная тема */
+.container.dark-theme {
+  background-color: #201000;
+}
+
+.theme-toggle {
+  position: fixed; /* Фиксированное положение на странице */
+  bottom: 20px;    /* Отступ от нижнего края */
+  right: 20px;     /* Отступ от правого края */
+  width: 50px;      /* Ширина кнопки */
+  height: 50px;     /* Высота кнопки */
+  border-radius: 50%; /* Делаем кнопку круглой */
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+  outline: 3px solid #ed5711;
+  outline-offset: 2px;
+  cursor: pointer;    /* Курсор в виде указателя */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для объема */
+  z-index: 1000;     /* Поверх всего остального контента */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавные переходы */
+  overflow: hidden;   /* Обрезаем все, что выходит за границы круга */
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1); /* Небольшое увеличение при наведении */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Более выраженная тень */
+}
+
+.theme-toggle::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23444"><path d="M17.75 4.09l-2.53 1.94L12.8 5.5a8.19 8.19 0 0 0-2.49 1.57c-.47.29-.71.75-.69 1.26.02.5.27.97.71 1.25l.04.03a7.63 7.63 0 0 1 3.8 3.22c.53.24.99.37 1.47.37.25 0 .5-.05.74-.13v0a11.31 11.31 0 0 1 2.49-2.01c.6-.49.89-1.27.77-2.04-.12-.77-.52-1.4-.99-1.85zM9.92 9.21A7.23 7.23 0 0 1 12 12c0 .76-.11 1.5-.31 2.21l-.03-.04a7.39 7.39 0 0 1-4.84-3.14c-.33-.34-.5-.79-.48-1.25.02-.46.22-.89.58-1.18l.05-.04 1.34 1.03zM3.66 14.14l.98.77a7.14 7.14 0 0 1 2.42 2.05c.61.45.88 1.27.78 2.05-.1.78-.5 1.4-.98 1.83l-.02.02a7.59 7.59 0 0 1-3.21-3.41c-.43-.66-.6-1.37-.56-2.08.04-.7.27-1.36.67-1.85z"/></svg>');
+  background-size: 60%; /* Размер иконки */
+  background-position: center; /* Положение иконки */
+  background-repeat: no-repeat; /* Без повторений */
+  transition: filter 0.3s ease;
+}
+
+.theme-toggle:hover::before {
+filter: brightness(1.3); /* Слегка осветляем иконку при наведении */
+}
+
+
